@@ -1,0 +1,48 @@
+# let's start with a zero matrix
+A = [
+    [0,0,0],
+    [0,0,0],
+    [0,0,0]
+]
+
+# we will randomly pick the entries and then make normalization for each column
+# it will be easier to iteratively construct the columns
+# you may notice that each column is a probabilistic state
+from random import randrange
+
+normalization_factor = [0,0,0] # the normalization factor of each column may be different
+
+for j in range(3): # each column is iteratively constructed
+    normalization_factor[j] = 0
+    while normalization_factor[j]==0: # the normalization factor cannot be zero
+        for i in range(3):
+            A[i][j] = randrange(101) # pick a random value between 0 and 100
+            normalization_factor[j] += A[i][j]
+
+# let's print matrix A before the normalization
+# the entries are between 0 and 100
+print("matrix A before normalization:")
+for i in range(3):
+    print(A[i])
+
+
+# let's normalize each column
+for j in range(3):
+    for i in range(3):
+        A[i][j] /= normalization_factor[j]  # shorter form of A[i][j] = A[i][j] / normalization_factor[j]
+        
+# let's print matrix A after the normalization
+print() # print an empty line
+print("matrix A after normalization:")
+for i in range(3):
+    print(A[i]) 
+
+print()
+print("the column summations must be 1")
+
+sum = [0,0,0]
+for j in range(3):
+    for i in range(3):
+        sum[j] += A[i][j]
+
+print(sum) 
