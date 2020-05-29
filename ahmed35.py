@@ -1,7 +1,3 @@
-#
-# We copy and paste the previous codes
-#
-
 # initial case
 # We assume that the probability of having head is 1 at the beginning,
 #    becasue Asja will start with one euro.
